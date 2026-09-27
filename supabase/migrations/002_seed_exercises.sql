@@ -1,90 +1,64 @@
--- VSTEP Speaking App — Seed Exercises
--- Run this AFTER 001_initial_schema.sql in Supabase SQL Editor
--- This inserts sample exercises for all 3 parts
+-- VSTEP Speaking App — Official Standard Seed Exercises
+-- Run this in Supabase SQL Editor
+-- Part 1: Tương tác xã hội (3 phút - 2 chủ đề)
+-- Part 2: Thảo luận giải pháp (4 phút - 1p chuẩn bị, 3p nói: Tình huống & 3 lựa chọn)
+-- Part 3: Phát triển đề tài (5 phút - 1p chuẩn bị, 4p nói: Sơ đồ tư duy & câu hỏi mở rộng)
+
+DELETE FROM public.exercises;
 
 -- ============================================================
--- Part 1: Hỏi đáp (Short Q&A) — 5 exercises
--- ============================================================
-INSERT INTO public.exercises (part, title, prompt, reference_text, difficulty) VALUES
-(1, 'Self Introduction', 
- 'Please introduce yourself. What is your name, where are you from, and what do you do?',
- 'My name is [Name]. I am from [City], Vietnam. I am a student at [University] and I am studying [Major].',
- 1),
-
-(1, 'Daily Routine',
- 'Can you describe your daily routine? What do you usually do in the morning?',
- 'I usually wake up at 7 in the morning. First, I brush my teeth and wash my face. Then I have breakfast, usually rice or bread with eggs. After that, I go to school by bus.',
- 1),
-
-(1, 'Favorite Food',
- 'What is your favorite food? Can you describe it and explain why you like it?',
- 'My favorite food is pho, which is a traditional Vietnamese noodle soup. It has rice noodles in a flavorful beef broth with herbs and spices. I like it because it is delicious and reminds me of home.',
- 2),
-
-(1, 'Hobbies',
- 'What are your hobbies? How often do you do them?',
- 'My main hobbies are reading books and playing badminton. I usually read for about one hour every evening before bed. I play badminton with my friends twice a week at the park near my house.',
- 2),
-
-(1, 'Weather',
- 'How is the weather in your hometown? Which season do you like best and why?',
- 'The weather in my hometown is quite hot and humid in summer, but cool and pleasant in winter. I prefer autumn because the temperature is comfortable and the scenery is beautiful with falling leaves.',
- 2);
-
--- ============================================================
--- Part 2: Trình bày chủ đề (Topic Presentation) — 5 exercises
+-- Part 1: Tương tác xã hội (Social Interaction) — 3 phút
 -- ============================================================
 INSERT INTO public.exercises (part, title, prompt, reference_text, difficulty) VALUES
-(2, 'Describe Your Hometown',
- 'Describe your hometown. You should say: where it is located, what it is famous for, what you like most about it, and how it has changed over the years. You have 1 minute to prepare and 2 minutes to speak.',
- 'My hometown is Da Nang, a beautiful coastal city in central Vietnam. It is located along the coast of the South China Sea. Da Nang is famous for its beautiful beaches, especially My Khe Beach, and the Dragon Bridge. What I like most about my hometown is the friendly people and the delicious local food, especially seafood. Over the past ten years, Da Nang has changed a lot. Many new buildings and bridges have been built, and it has become a popular tourist destination for both Vietnamese and international visitors.',
+(1, 'Chủ đề 1: Free Time & Hometown',
+ 'Part 1: Social Interaction (3 minutes). You are asked questions about 2 familiar topics: Free Time & Weekends, and Your Hometown. Answer all questions directly, fluently, and naturally.',
+ 'In my free time, I really enjoy reading personal development books and playing badminton with my friends. On weekends, I definitely prefer going outdoors because it helps me recharge my energy after a stressful week of studying. As for my hometown, I was born in Da Nang, a coastal city in central Vietnam. What I love most is the peaceful atmosphere and the fresh seafood. In recent years, my hometown has developed rapidly with modern bridges and higher living standards.',
  2),
 
-(2, 'Technology in Education',
- 'Talk about the role of technology in education. You should say: how technology is used in schools today, what advantages it brings, what disadvantages it may have, and what you think about the future of technology in education.',
- 'Technology plays an important role in education today. In many schools, students use computers and tablets for learning. Teachers use projectors and online platforms to deliver their lessons. The main advantage of technology in education is that it makes learning more interactive and accessible. Students can access information from anywhere and learn at their own pace. However, there are some disadvantages. Students may become distracted by social media and games. Also, not all students have access to technology at home. In the future, I believe technology will continue to transform education with tools like artificial intelligence and virtual reality.',
- 3),
+(1, 'Chủ đề 2: Family & Physical Exercise',
+ 'Part 1: Social Interaction (3 minutes). Answer questions regarding Family Life and Sports / Keeping Fit. Maintain a confident tone and natural pace.',
+ 'My family has four members: my parents, my younger sister, and me. We love gathering for dinner every evening to share stories about our day. In terms of sports, I try to go jogging around the park three times a week. Jogging helps me stay fit, clear my mind, and maintain good cardiovascular health.',
+ 2),
 
-(2, 'A Memorable Trip',
- 'Describe a memorable trip you have taken. You should say: where you went, who you went with, what you did there, and why it was memorable.',
- 'Last summer, I went on a trip to Hoi An with my family. We stayed for three days and two nights. We visited the ancient town, which is a UNESCO World Heritage Site. We walked along the beautiful streets with old houses and colorful lanterns. We also visited the Japanese Bridge and several traditional craft workshops. The most memorable part was taking a boat ride on the Thu Bon River at night. The river was lit up with hundreds of floating lanterns, and it was absolutely magical. This trip was memorable because it was the first time our whole family traveled together in years.',
- 3),
-
-(2, 'Environmental Protection',
- 'Talk about environmental protection. You should say: what environmental problems exist in your area, what people are doing to help, what you personally do to protect the environment, and what more should be done.',
- 'There are several environmental problems in my area, including air pollution from traffic, plastic waste in rivers, and deforestation. Many people and organizations are working to address these issues. The local government has planted more trees and built more parks. Some volunteer groups regularly clean up beaches and rivers. Personally, I try to reduce plastic waste by using a reusable water bottle and shopping bags. I also separate my garbage for recycling. I think more should be done, such as stricter laws against pollution, better public transportation, and more environmental education in schools.',
- 4),
-
-(2, 'Your Dream Job',
- 'Describe your dream job. You should say: what the job is, what skills or qualifications are needed, why you want this job, and how you plan to achieve this goal.',
- 'My dream job is to become a software engineer at a technology company. To do this job, I need strong programming skills, especially in languages like Python and JavaScript. I also need good problem-solving abilities and teamwork skills. I want this job because I am passionate about technology and I enjoy creating applications that can help people. I plan to achieve this goal by studying hard at university, doing internships at tech companies, and building my own projects to gain practical experience.',
+(1, 'Chủ đề 3: Everyday Technology & Food Culture',
+ 'Part 1: Social Interaction (3 minutes). Answer questions on Daily Technology Habits and Vietnamese Food Culture.',
+ 'I use my smartphone mostly for studying online and communicating with my classmates. However, I try to limit screen time before going to sleep. When it comes to food, Vietnamese cuisine is renowned for its harmony of fresh herbs and light broths. My favorite dish is traditional Beef Pho with plenty of herbs and lemon.',
  3);
 
 -- ============================================================
--- Part 3: Thảo luận (Discussion) — 5 exercises
+-- Part 2: Thảo luận giải pháp (Solution Discussion) — 4 phút
 -- ============================================================
 INSERT INTO public.exercises (part, title, prompt, reference_text, difficulty) VALUES
-(3, 'Online vs Traditional Learning',
- 'Some people prefer online learning while others prefer traditional classroom learning. Discuss the advantages and disadvantages of both methods. Which do you think is more effective and why?',
- 'Both online learning and traditional classroom learning have their own advantages and disadvantages. Online learning offers flexibility, allowing students to study at their own pace and from any location. It also provides access to a wide range of resources and courses. However, online learning can lead to feelings of isolation and requires strong self-discipline. Traditional classroom learning, on the other hand, provides face-to-face interaction with teachers and peers, which can enhance understanding and motivation. However, it requires students to follow a fixed schedule and commute to school. In my opinion, a combination of both methods would be most effective, as it can leverage the strengths of each approach.',
+(2, 'Tình huống 1: Món quà tốt nghiệp đại học',
+ 'Part 2: Solution Discussion (4 minutes: 1 min prep, 3 mins speaking).\nSituation: Your younger sister is graduating from university next month, and you want to give her a meaningful graduation gift. Three options are suggested: (1) A new laptop, (2) A vacation trip to Da Nang, (3) An English communication course.\nWhich option do you think is the best choice? Explain your choice and explain why you reject the other two options.',
+ 'Given the situation where my younger sister is graduating from university, I believe an English communication course is the most beneficial choice. First and foremost, as a fresh graduate entering the competitive job market, mastering fluent English will significantly boost her career prospects and open doors to multinational companies. While a new laptop is undoubtedly useful, she likely already owns a functional computer from her university studies, making a new one an unnecessary financial burden. Regarding the vacation trip to Da Nang, while it offers pleasant relaxation, the enjoyment is only short-lived. In contrast, language skills are a long-term investment that will benefit her entire professional life. Therefore, I strongly advocate for the English communication course.',
  3),
 
-(3, 'Social Media Impact',
- 'Social media has become an important part of daily life, especially for young people. Discuss the positive and negative effects of social media on young people. What solutions would you suggest to minimize the negative effects?',
- 'Social media has both positive and negative effects on young people. On the positive side, it helps people stay connected with friends and family, provides entertainment, and can be a platform for sharing ideas and creativity. It also offers educational content and news updates. On the negative side, excessive use of social media can lead to addiction, cyberbullying, and mental health issues such as anxiety and depression. It can also reduce face-to-face communication skills and lead to misinformation. To minimize the negative effects, I would suggest setting time limits for social media use, educating young people about online safety, and encouraging more offline activities and real-world social interactions.',
+(2, 'Tình huống 2: Việc làm thêm cho sinh viên',
+ 'Part 2: Solution Discussion (4 minutes: 1 min prep, 3 mins speaking).\nSituation: A first-year university student wants to find a part-time job to earn extra money and gain experience. Three options are available: (1) Working as a waiter/waitress at a coffee shop, (2) Working as a private tutor for elementary school pupils, (3) Doing online marketing from home.\nWhich option would you recommend? Justify your recommendation and state why the other two options are less suitable.',
+ 'If I were in this position, I would strongly advise the freshman to choose working as a private tutor. Firstly, tutoring offers flexible working hours that can easily fit around a demanding university schedule. Secondly, it provides a much higher hourly rate compared to other entry-level student jobs, while sharpening communication and patience skills. On the other hand, working as a coffee shop barista or waitress can be physically exhausting and often requires late night shifts that disrupt morning lectures. Online marketing, though convenient, often requires existing technical expertise and carries a risk of unreliable payment for beginners. For these reasons, tutoring remains the superior option.',
+ 3),
+
+(2, 'Tình huống 3: Hoạt động cuối tuần của câu lạc bộ',
+ 'Part 2: Solution Discussion (4 minutes: 1 min prep, 3 mins speaking).\nSituation: Your English club is organizing a team-building weekend for 30 members. Three options have been proposed: (1) A picnic in an eco-park, (2) A charity visit to a local orphanage, (3) A karaoke and board-game party.\nWhich option is the most suitable? Explain your choice and explain why you do not choose the other two.',
+ 'Among the three proposals for our 30-member English club, I firmly believe that organizing a picnic in an eco-park is the ideal choice. An outdoor picnic provides a spacious and natural environment where all members can participate in large-scale team-building games, practice English conversations, and build lasting friendships. Meanwhile, a karaoke and board-game party would be too noisy and chaotic for meaningful English practice, and the indoor venue would be cramped for 30 people. Visiting a local orphanage is a noble and heartfelt activity, but it requires thorough psychological preparation and fundraising rather than serving as an informal team-bonding event. Therefore, the eco-park picnic is the most balanced and engaging option.',
+ 3);
+
+-- ============================================================
+-- Part 3: Phát triển đề tài (Topic Development) — 5 phút
+-- ============================================================
+INSERT INTO public.exercises (part, title, prompt, reference_text, difficulty) VALUES
+(3, 'Đề tài 1: Lợi ích của việc đọc sách',
+ 'Part 3: Topic Development (5 minutes: 1 min prep, 4 mins speaking).\nTopic: Reading books provides tremendous benefits to young people.\nUse the mindmap suggestions (expanding vocabulary, reducing stress, stimulating imagination) and your own ideas to deliver a structured speech. Afterwards, answer the follow-up questions.',
+ 'It is widely acknowledged that reading books brings immense intellectual and emotional benefits to young people. First of all, regular reading dramatically enriches vocabulary and deepens academic knowledge across diverse disciplines. Secondly, reading enhances cognitive focus and provides a calming retreat from the digital distractions of social media. Furthermore, immersing oneself in literature stimulates creative imagination and empathy by exposing readers to various cultures and life perspectives. In addition to these points, I would like to emphasize that reading fosters critical thinking, helping students discern credible facts from fake information online.\n\nRegarding the follow-up question, I do not believe e-books will completely replace physical books. While e-books provide remarkable convenience, physical books deliver a tactile experience that screens cannot replicate.',
  4),
 
-(3, 'Urbanization',
- 'Many people are moving from rural areas to cities. Discuss the reasons for this trend and its effects on both rural and urban areas. What should the government do to address the challenges of urbanization?',
- 'There are several reasons why people move from rural areas to cities. The main reasons include better job opportunities, higher salaries, better education and healthcare facilities, and more entertainment options. However, urbanization has significant effects on both areas. In cities, it leads to overcrowding, traffic congestion, pollution, and housing shortages. In rural areas, it causes a decline in the workforce, abandoned farmland, and a loss of traditional culture. The government should address these challenges by developing infrastructure in rural areas, creating job opportunities outside major cities, improving public transportation in urban areas, and implementing sustainable urban planning policies.',
+(3, 'Đề tài 2: Làm việc từ xa (Remote Working)',
+ 'Part 3: Topic Development (5 minutes: 1 min prep, 4 mins speaking).\nTopic: Working from home (remote work) has become increasingly prevalent in the modern economy.\nDeliver a comprehensive presentation using the mindmap nodes (saving commute, flexible schedule, lower overhead) and answer the follow-up questions.',
+ 'In recent years, remote working has emerged as a revolutionary trend reshaping the global workforce. One of the clearest advantages is the elimination of daily commuting, which saves countless hours and reduces transportation costs and carbon emissions. In addition, working from home provides workers with flexible scheduling, enabling a healthier work-life balance. Employers also benefit by reducing office rental and utility expenditures. Nevertheless, we must recognize that remote work can cause feelings of social isolation and blurred boundaries between professional duties and private life.\n\nAnswering the follow-up question, I believe hybrid working—splitting the week between office and home—is the optimal model for long-term productivity and employee wellbeing.',
  4),
 
-(3, 'Work-Life Balance',
- 'Many working people today find it difficult to maintain a good work-life balance. Discuss the causes of this problem and suggest solutions for both employers and employees.',
- 'There are several causes of poor work-life balance. Many companies expect employees to work long hours and be available outside office hours through email and messaging apps. The high cost of living in cities forces people to take on more work. Additionally, the competitive job market creates pressure to perform. For employers, solutions include offering flexible working hours, remote work options, and encouraging employees to take their vacation days. They should also avoid contacting employees outside working hours. For employees, solutions include setting clear boundaries between work and personal time, prioritizing tasks, learning to say no to excessive workload, and making time for exercise, hobbies, and family.',
- 5),
-
-(3, 'Tourism Development',
- 'Tourism brings many benefits to a country, but it can also cause problems. Discuss the advantages and disadvantages of tourism development and suggest ways to develop tourism sustainably.',
- 'Tourism brings several advantages to a country. It creates jobs, generates income, and promotes cultural exchange. It also encourages the preservation of historical sites and natural areas. However, tourism can also cause problems such as environmental damage, overcrowding in popular destinations, increased cost of living for local residents, and the loss of local culture. To develop tourism sustainably, we should promote eco-tourism and responsible travel practices. The government should implement regulations to protect the environment and local communities. Tour operators should educate tourists about respecting local customs and the environment. Revenue from tourism should be reinvested in conservation and community development.',
+(3, 'Đề tài 3: Ảnh hưởng của mạng xã hội (Social Media)',
+ 'Part 3: Topic Development (5 minutes: 1 min prep, 4 mins speaking).\nTopic: Social media has transformed human communication and society.\nAnalyze the positive and negative facets using the mindmap nodes and address the examiner follow-up questions.',
+ 'Social media has undeniably redefined how human beings interact in the 21st century. On the positive side, platforms like Facebook, LinkedIn, and Instagram allow instant global connectivity, enabling families and colleagues to maintain touch across continents. Furthermore, social networks democratize information dissemination and provide unprecedented business marketing avenues for small enterprises. However, the darker side cannot be overlooked: excessive usage is strongly linked to mental health concerns such as anxiety, cyberbullying, and sleep deprivation among adolescents.\n\nIn response to the follow-up inquiry, governments and tech giants must enforce stricter age verification and promote digital literacy curricula in schools.',
  5);

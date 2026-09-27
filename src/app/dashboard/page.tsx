@@ -115,13 +115,13 @@ export default async function DashboardPage() {
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500/20 to-indigo-600/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
                   📝
                 </div>
-                <span className="badge badge-active">5 bài • Sẵn sàng</span>
+                <span className="badge badge-active">3 phút • Sẵn sàng</span>
               </div>
               <h3 className="text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors" style={{ color: "var(--text-primary)" }}>
-                Phần 1: Hỏi đáp
+                Part 1: Tương tác xã hội
               </h3>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>
-                Trả lời các câu hỏi ngắn về bản thân, cuộc sống hàng ngày. Rèn luyện phản xạ giao tiếp tự nhiên.
+                Trả lời các câu hỏi ngắn về 2 chủ đề quen thuộc hàng ngày như sở thích, quê hương, gia đình hoặc thói quen.
               </p>
             </div>
             <div className="flex items-center justify-between text-xs pt-4 border-t border-[var(--border)]" style={{ color: "var(--text-muted)" }}>
@@ -129,7 +129,7 @@ export default async function DashboardPage() {
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                3-5 phút / bài
+                3 phút • Trực tiếp
               </span>
               <span className="text-indigo-400 font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
                 Luyện ngay →
@@ -147,13 +147,13 @@ export default async function DashboardPage() {
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-500/20 to-cyan-600/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
                   🗣️
                 </div>
-                <span className="badge badge-active">5 bài • Sẵn sàng</span>
+                <span className="badge badge-active">4 phút • Sẵn sàng</span>
               </div>
               <h3 className="text-lg font-bold mb-2 group-hover:text-cyan-400 transition-colors" style={{ color: "var(--text-primary)" }}>
-                Phần 2: Trình bày chủ đề
+                Part 2: Thảo luận giải pháp
               </h3>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>
-                Chuẩn bị 1 phút, trình bày 2 phút theo chủ đề cho sẵn. Phát triển kỹ năng nói dài mạch lạc.
+                Tình huống thực tế kèm 3 phương án: chọn phương án tối ưu, bảo vệ ý kiến và phản biện 2 phương án còn lại.
               </p>
             </div>
             <div className="flex items-center justify-between text-xs pt-4 border-t border-[var(--border)]" style={{ color: "var(--text-muted)" }}>
@@ -161,7 +161,7 @@ export default async function DashboardPage() {
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                3-5 phút / bài
+                1p chuẩn bị • 3p nói
               </span>
               <span className="text-cyan-400 font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
                 Luyện ngay →
@@ -177,15 +177,15 @@ export default async function DashboardPage() {
             <div>
               <div className="flex items-start justify-between mb-5">
                 <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-500/20 to-purple-600/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform duration-300">
-                  💬
+                  🧠
                 </div>
-                <span className="badge badge-active">5 bài • Sẵn sàng</span>
+                <span className="badge badge-active">5 phút • Sẵn sàng</span>
               </div>
               <h3 className="text-lg font-bold mb-2 group-hover:text-purple-400 transition-colors" style={{ color: "var(--text-primary)" }}>
-                Phần 3: Thảo luận
+                Part 3: Phát triển đề tài
               </h3>
               <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>
-                Thảo luận và đưa ra quan điểm về các vấn đề xã hội. Rèn tư duy phản biện bằng tiếng Anh.
+                Thuyết trình dựa trên sơ đồ tư duy (mindmap) 3 gợi ý có sẵn, sau đó trả lời các câu hỏi mở rộng của giám khảo.
               </p>
             </div>
             <div className="flex items-center justify-between text-xs pt-4 border-t border-[var(--border)]" style={{ color: "var(--text-muted)" }}>
@@ -193,7 +193,7 @@ export default async function DashboardPage() {
                 <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                5-8 phút / bài
+                1p chuẩn bị • 4p nói
               </span>
               <span className="text-purple-400 font-semibold group-hover:translate-x-1 transition-transform flex items-center gap-1">
                 Luyện ngay →

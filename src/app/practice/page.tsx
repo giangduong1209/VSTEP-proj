@@ -26,25 +26,25 @@ export default async function PracticeListPage({
 
   const partMeta = {
     1: {
-      title: "Phần 1: Hỏi & Đáp ngắn",
-      desc: "Luyện phản xạ giao tiếp tự nhiên với các chủ đề đời sống hàng ngày",
-      badge: "Part 1 • 3-5 phút",
+      title: "Phần 1: Tương tác xã hội",
+      desc: "3 phút • Trả lời các câu hỏi ngắn về 2 chủ đề quen thuộc (sở thích, quê hương, gia đình)",
+      badge: "Part 1 • 3 phút",
       color: "from-indigo-500/20 to-indigo-600/5",
       icon: "📝",
     },
     2: {
-      title: "Phần 2: Trình bày chủ đề",
-      desc: "1 phút chuẩn bị, 2 phút trình bày mạch lạc theo chủ đề cho trước",
-      badge: "Part 2 • 3-5 phút",
+      title: "Phần 2: Thảo luận giải pháp",
+      desc: "4 phút • 1 phút chuẩn bị, 3 phút nói. Chọn 1 trong 3 phương án, bảo vệ & phản biện 2 phương án còn lại",
+      badge: "Part 2 • 4 phút (1p chuẩn bị)",
       color: "from-cyan-500/20 to-cyan-600/5",
       icon: "🗣️",
     },
     3: {
-      title: "Phần 3: Thảo luận & Quan điểm",
-      desc: "Phân tích vấn đề chuyên sâu, đưa ra lập luận và bảo vệ quan điểm",
-      badge: "Part 3 • 5-8 phút",
+      title: "Phần 3: Phát triển đề tài",
+      desc: "5 phút • 1 phút chuẩn bị, 4 phút nói. Thuyết trình sơ đồ tư duy (Mindmap) & trả lời câu hỏi mở rộng",
+      badge: "Part 3 • 5 phút (1p chuẩn bị)",
       color: "from-purple-500/20 to-purple-600/5",
-      icon: "💬",
+      icon: "🧠",
     },
   };
 
@@ -110,7 +110,7 @@ export default async function PracticeListPage({
             }`}
             style={{ color: currentPart === 1 ? "#ffffff" : "var(--text-secondary)" }}
           >
-            📝 Phần 1: Hỏi đáp
+            📝 Phần 1: Tương tác xã hội (3p)
           </Link>
           <Link
             href="/practice?part=2"
@@ -121,7 +121,7 @@ export default async function PracticeListPage({
             }`}
             style={{ color: currentPart === 2 ? "#ffffff" : "var(--text-secondary)" }}
           >
-            🗣️ Phần 2: Trình bày
+            🗣️ Phần 2: Thảo luận giải pháp (4p)
           </Link>
           <Link
             href="/practice?part=3"
@@ -132,7 +132,7 @@ export default async function PracticeListPage({
             }`}
             style={{ color: currentPart === 3 ? "#ffffff" : "var(--text-secondary)" }}
           >
-            💬 Phần 3: Thảo luận
+            🧠 Phần 3: Phát triển đề tài (5p)
           </Link>
         </div>
 
