@@ -1,0 +1,201 @@
+import { createClient } from "@/lib/supabase/server";
+import { redirect } from "next/navigation";
+import Link from "next/link";
+import { ThemeToggle } from "@/lib/theme-toggle";
+import { getExercises } from "@/lib/queries";
+import type { ExercisePart } from "@/lib/types/database";
+
+export default async function PracticeListPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ part?: string }>;
+}) {
+  const supabase = await createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
+  if (!user) {
+    redirect("/auth/login");
+  }
+
+  const { part: partParam } = await searchParams;
+  const currentPart = partParam ? (parseInt(partParam) as ExercisePart) : undefined;
+
+  const exercises = await getExercises(currentPart);
+
+  const partMeta = {
+    1: {
+      title: "Phần 1: Hỏi & Đáp ngắn",
+      desc: "Luyện phản xạ giao tiếp tự nhiên với các chủ đề đời sống hàng ngày",
+      badge: "Part 1 • 3-5 phút",
+      color: "from-indigo-500/20 to-indigo-600/5",
+      icon: "📝",
+    },
+    2: {
+      title: "Phần 2: Trình bày chủ đề",
+      desc: "1 phút chuẩn bị, 2 phút trình bày mạch lạc theo chủ đề cho trước",
+      badge: "Part 2 • 3-5 phút",
+      color: "from-cyan-500/20 to-cyan-600/5",
+      icon: "🗣️",
+    },
+    3: {
+      title: "Phần 3: Thảo luận & Quan điểm",
+      desc: "Phân tích vấn đề chuyên sâu, đưa ra lập luận và bảo vệ quan điểm",
+      badge: "Part 3 • 5-8 phút",
+      color: "from-purple-500/20 to-purple-600/5",
+      icon: "💬",
+    },
+  };
+
+  return (
+    <div className="min-h-screen bg-mesh flex flex-col">
+      {/* Header — 100% solid background */}
+      <header className="sticky top-0 z-50 app-header">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Link
+              href="/dashboard"
+              className="flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-[var(--surface-hover)] transition-colors"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+              <span>Dashboard</span>
+            </Link>
+            <div className="h-4 w-px bg-[var(--border)]" />
+            <span className="text-base font-bold" style={{ color: "var(--text-primary)" }}>
+              Danh sách bài luyện tập
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <ThemeToggle />
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content */}
+      <main className="max-w-6xl mx-auto px-6 py-8 flex-1 w-full">
+        {/* Page Title */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-extrabold mb-2" style={{ color: "var(--text-primary)" }}>
+            Chọn đề bài luyện nói
+          </h1>
+          <p className="text-base" style={{ color: "var(--text-secondary)" }}>
+            Hệ thống chấm điểm AI phân tích chi tiết độ chính xác ngữ âm, độ trôi chảy và ngữ điệu.
+          </p>
+        </div>
+
+        {/* Filter Tabs */}
+        <div className="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b" style={{ borderColor: "var(--border)" }}>
+          <Link
+            href="/practice"
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              !currentPart
+                ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
+                : "hover:bg-[var(--surface-hover)]"
+            }`}
+            style={{ color: !currentPart ? "#ffffff" : "var(--text-secondary)" }}
+          >
+            Tất cả phần ({exercises.length})
+          </Link>
+          <Link
+            href="/practice?part=1"
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              currentPart === 1
+                ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
+                : "hover:bg-[var(--surface-hover)]"
+            }`}
+            style={{ color: currentPart === 1 ? "#ffffff" : "var(--text-secondary)" }}
+          >
+            📝 Phần 1: Hỏi đáp
+          </Link>
+          <Link
+            href="/practice?part=2"
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              currentPart === 2
+                ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
+                : "hover:bg-[var(--surface-hover)]"
+            }`}
+            style={{ color: currentPart === 2 ? "#ffffff" : "var(--text-secondary)" }}
+          >
+            🗣️ Phần 2: Trình bày
+          </Link>
+          <Link
+            href="/practice?part=3"
+            className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
+              currentPart === 3
+                ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
+                : "hover:bg-[var(--surface-hover)]"
+            }`}
+            style={{ color: currentPart === 3 ? "#ffffff" : "var(--text-secondary)" }}
+          >
+            💬 Phần 3: Thảo luận
+          </Link>
+        </div>
+
+        {/* Exercise Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {exercises.map((exercise) => {
+            const meta = partMeta[exercise.part as 1 | 2 | 3] || partMeta[1];
+            return (
+              <div
+                key={exercise.id}
+                className="card-exercise flex flex-col justify-between group"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="badge badge-active flex items-center gap-1.5">
+                      <span>{meta.icon}</span>
+                      <span>Phần {exercise.part}</span>
+                    </span>
+                    <span
+                      className="text-xs px-2.5 py-1 rounded-md font-medium"
+                      style={{
+                        background: "var(--surface)",
+                        color: "var(--text-muted)",
+                      }}
+                    >
+                      Độ khó: {"⭐".repeat(exercise.difficulty || 1)}
+                    </span>
+                  </div>
+
+                  <h3
+                    className="text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {exercise.title}
+                  </h3>
+
+                  <p
+                    className="text-sm line-clamp-3 mb-6 leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {exercise.prompt}
+                  </p>
+                </div>
+
+                <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
+                  <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                    Format chuẩn VSTEP
+                  </span>
+                  <Link
+                    href={`/practice/${exercise.id}`}
+                    className="btn-primary !py-2 !px-4 text-xs font-semibold rounded-lg flex items-center gap-1.5"
+                  >
+                    <span>Luyện nói</span>
+                    <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </main>
+    </div>
+  );
+}
