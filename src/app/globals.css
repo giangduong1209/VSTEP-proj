@@ -85,7 +85,33 @@
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-solid: var(--background-solid);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-light: var(--primary-light);
+  --color-primary-dark: var(--primary-dark);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-surface-solid: var(--surface-solid);
+  --color-border: var(--border);
+  --color-border-hover: var(--border-hover);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-glow-primary: var(--glow-primary);
+  --color-glow-accent: var(--glow-accent);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-bg-hover: var(--glass-bg-hover);
+  --color-glass-sm-bg: var(--glass-sm-bg);
+  --color-header-bg: var(--header-bg);
+  --color-header-border: var(--header-border);
+  --color-input-bg: var(--input-bg);
+  --color-input-bg-focus: var(--input-bg-focus);
   --font-sans: var(--font-inter);
 }
 

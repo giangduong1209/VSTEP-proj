@@ -24,7 +24,7 @@ export default function HomePage() {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-white text-lg shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition-shadow">
               🎤
             </div>
-            <span className="text-lg font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
+            <span className="text-lg font-bold tracking-tight text-text-primary">
               VSTEP Speaking
             </span>
           </Link>
@@ -32,8 +32,7 @@ export default function HomePage() {
             <ThemeToggle />
             <Link
               href="/auth/login"
-              className="px-5 py-2.5 text-sm font-medium rounded-lg hover:bg-[var(--surface-hover)] transition-all duration-300"
-              style={{ color: "var(--text-secondary)" }}
+              className="px-5 py-2.5 text-sm font-medium rounded-lg hover:bg-surface-hover transition-all duration-300 text-text-secondary"
             >
               Đăng nhập
             </Link>
@@ -51,14 +50,14 @@ export default function HomePage() {
       <main className="relative z-10 flex-1 flex items-center justify-center px-6">
         <div className="max-w-3xl text-center">
           {/* Announcement badge */}
-          <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm" style={{ background: "rgba(99,102,241,0.1)", borderColor: "rgba(99,102,241,0.2)", color: "var(--primary-light)" }}>
+          <div className="animate-fade-in-up mb-8 inline-flex items-center gap-2 px-4 py-2 rounded-full border text-sm bg-indigo-500/10 border-indigo-500/20 text-primary-light">
             <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             AI-Powered Pronunciation Scoring
           </div>
 
           <h1
-            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight animate-fade-in-up"
-            style={{ color: "var(--text-primary)", animationDelay: "0.15s" }}
+            className="text-5xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-[1.1] tracking-tight animate-fade-in-up text-text-primary"
+            style={{ animationDelay: "0.15s" }}
           >
             Luyện nói tiếng Anh
             <br />
@@ -66,8 +65,8 @@ export default function HomePage() {
           </h1>
 
           <p
-            className="text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed animate-fade-in-up opacity-0"
-            style={{ color: "var(--text-secondary)", animationDelay: "0.3s" }}
+            className="text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed animate-fade-in-up opacity-0 text-text-secondary"
+            style={{ animationDelay: "0.3s" }}
           >
             Chấm điểm phát âm bằng AI, phân tích lỗi phát âm thường gặp của
             người Việt, luyện tập theo đúng format đề thi VSTEP.
@@ -122,10 +121,10 @@ export default function HomePage() {
               >
                 {item.icon}
               </div>
-              <h3 className="font-semibold text-lg mb-2" style={{ color: "var(--text-primary)" }}>
+              <h3 className="font-semibold text-lg mb-2 text-text-primary">
                 {item.title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm leading-relaxed text-text-secondary">
                 {item.desc}
               </p>
             </div>
@@ -134,12 +133,12 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer className="relative z-10 px-6 py-6 border-t" style={{ borderColor: "var(--border)" }}>
+      <footer className="relative z-10 px-6 py-6 border-t border-border">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <p className="text-sm" style={{ color: "var(--text-muted)" }}>
+          <p className="text-sm text-text-muted">
             © 2026 VSTEP Speaking. Ứng dụng luyện nói tiếng Anh.
           </p>
-          <div className="flex items-center gap-1 text-sm" style={{ color: "var(--text-muted)" }}>
+          <div className="flex items-center gap-1 text-sm text-text-muted">
             <span className="w-2 h-2 rounded-full bg-emerald-500" />
             Powered by Azure AI
           </div>

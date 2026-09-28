@@ -3,10 +3,10 @@
 import { createClient } from "@/lib/supabase/client";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { ThemeToggle } from "@/lib/theme-toggle";
 
-export default function LoginPage() {
+function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const supabase = createClient();
@@ -72,17 +72,17 @@ export default function LoginPage() {
             <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-white text-xl shadow-lg shadow-indigo-500/20">
               🎤
             </div>
-            <span className="text-xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
+            <span className="text-xl font-bold tracking-tight text-text-primary">
               VSTEP Speaking
             </span>
           </Link>
 
-          <h1 className="text-4xl font-bold mb-4 leading-tight" style={{ color: "var(--text-primary)" }}>
+          <h1 className="text-4xl font-bold mb-4 leading-tight text-text-primary">
             Chào mừng bạn
             <br />
             <span className="text-gradient">quay trở lại</span>
           </h1>
-          <p className="text-lg leading-relaxed mb-10" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-lg leading-relaxed mb-10 text-text-secondary">
             Tiếp tục hành trình luyện nói tiếng Anh và cải thiện phát âm cùng AI.
           </p>
 
@@ -94,7 +94,7 @@ export default function LoginPage() {
             ].map((stat) => (
               <div key={stat.label} className="stat-card text-center">
                 <div className="text-2xl font-bold text-gradient">{stat.value}</div>
-                <div className="text-xs mt-1" style={{ color: "var(--text-muted)" }}>{stat.label}</div>
+                <div className="text-xs mt-1 text-text-muted">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -109,7 +109,7 @@ export default function LoginPage() {
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-white text-lg shadow-lg shadow-indigo-500/20">
                 🎤
               </div>
-              <span className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>
+              <span className="text-lg font-bold text-text-primary">
                 VSTEP Speaking
               </span>
             </Link>
@@ -117,8 +117,8 @@ export default function LoginPage() {
 
           <div className="glass p-8 md:p-10">
             <div className="mb-8">
-              <h2 className="text-2xl font-bold mb-2" style={{ color: "var(--text-primary)" }}>Đăng nhập</h2>
-              <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+              <h2 className="text-2xl font-bold mb-2 text-text-primary">Đăng nhập</h2>
+              <p className="text-sm text-text-secondary">
                 Nhập thông tin tài khoản để tiếp tục luyện tập
               </p>
             </div>
@@ -168,7 +168,7 @@ export default function LoginPage() {
               Đăng nhập bằng Google
             </button>
 
-            <p className="mt-8 text-center text-sm" style={{ color: "var(--text-muted)" }}>
+            <p className="mt-8 text-center text-sm text-text-muted">
               Chưa có tài khoản?{" "}
               <Link href="/auth/signup" className="link">Đăng ký miễn phí →</Link>
             </p>
@@ -178,3 +178,16 @@ export default function LoginPage() {
     </div>
   );
 }
+
+export default function LoginPage() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen flex bg-mesh items-center justify-center" />
+      }
+    >
+      <LoginForm />
+    </Suspense>
+  );
+}
+

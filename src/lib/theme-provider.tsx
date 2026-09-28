@@ -2,9 +2,9 @@
 
 import {
   createContext,
+  useCallback,
   useContext,
-  useEffect,
-  useState,
+  useSyncExternalStore,
   type ReactNode,
 } from "react";
 
@@ -24,42 +24,48 @@ export function useTheme() {
   return useContext(ThemeContext);
 }
 
+function getThemeSnapshot(): Theme {
+  if (typeof window === "undefined") return "dark";
+  const stored = localStorage.getItem("vstep-theme") as Theme | null;
+  if (stored === "light" || stored === "dark") return stored;
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function getThemeServerSnapshot(): Theme {
+  return "dark";
+}
+
+const THEME_CHANGE_EVENT = "vstep-theme-change";
+
+function subscribeTheme(onStoreChange: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", onStoreChange);
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  mediaQuery.addEventListener("change", onStoreChange);
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+    mediaQuery.removeEventListener("change", onStoreChange);
+  };
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
+  const theme = useSyncExternalStore(
+    subscribeTheme,
+    getThemeSnapshot,
+    getThemeServerSnapshot,
+  );
 
-  useEffect(() => {
-    setMounted(true);
-    const stored = localStorage.getItem("vstep-theme") as Theme | null;
-    if (stored) {
-      setTheme(stored);
-      document.documentElement.setAttribute("data-theme", stored);
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      const initial = prefersDark ? "dark" : "light";
-      setTheme(initial);
-      document.documentElement.setAttribute("data-theme", initial);
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
+  const toggleTheme = useCallback(() => {
+    const current = getThemeSnapshot();
+    const next: Theme = current === "dark" ? "light" : "dark";
     localStorage.setItem("vstep-theme", next);
     document.documentElement.setAttribute("data-theme", next);
-  };
-
-  // Prevent flash of wrong theme
-  if (!mounted) {
-    return (
-      <ThemeContext.Provider value={{ theme: "dark", toggleTheme }}>
-        {children}
-      </ThemeContext.Provider>
-    );
-  }
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
+  }, []);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>

@@ -56,16 +56,15 @@ export default async function PracticeListPage({
           <div className="flex items-center gap-4">
             <Link
               href="/dashboard"
-              className="flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-[var(--surface-hover)] transition-colors"
-              style={{ color: "var(--text-secondary)" }}
+              className="flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface-hover transition-colors text-text-secondary"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               <span>Dashboard</span>
             </Link>
-            <div className="h-4 w-px bg-[var(--border)]" />
-            <span className="text-base font-bold" style={{ color: "var(--text-primary)" }}>
+            <div className="h-4 w-px bg-border" />
+            <span className="text-base font-bold text-text-primary">
               Danh sách bài luyện tập
             </span>
           </div>
@@ -80,24 +79,23 @@ export default async function PracticeListPage({
       <main className="max-w-6xl mx-auto px-6 py-8 flex-1 w-full">
         {/* Page Title */}
         <div className="mb-8">
-          <h1 className="text-3xl font-extrabold mb-2" style={{ color: "var(--text-primary)" }}>
+          <h1 className="text-3xl font-extrabold mb-2 text-text-primary">
             Chọn đề bài luyện nói
           </h1>
-          <p className="text-base" style={{ color: "var(--text-secondary)" }}>
+          <p className="text-base text-text-secondary">
             Hệ thống chấm điểm AI phân tích chi tiết độ chính xác ngữ âm, độ trôi chảy và ngữ điệu.
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b" style={{ borderColor: "var(--border)" }}>
+        <div className="flex flex-wrap items-center gap-2 mb-8 pb-4 border-b border-border">
           <Link
             href="/practice"
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
               !currentPart
                 ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
-                : "hover:bg-[var(--surface-hover)]"
+                : "hover:bg-surface-hover text-text-secondary"
             }`}
-            style={{ color: !currentPart ? "#ffffff" : "var(--text-secondary)" }}
           >
             Tất cả phần ({exercises.length})
           </Link>
@@ -106,9 +104,8 @@ export default async function PracticeListPage({
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
               currentPart === 1
                 ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
-                : "hover:bg-[var(--surface-hover)]"
+                : "hover:bg-surface-hover text-text-secondary"
             }`}
-            style={{ color: currentPart === 1 ? "#ffffff" : "var(--text-secondary)" }}
           >
             📝 Phần 1: Tương tác xã hội (3p)
           </Link>
@@ -117,9 +114,8 @@ export default async function PracticeListPage({
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
               currentPart === 2
                 ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
-                : "hover:bg-[var(--surface-hover)]"
+                : "hover:bg-surface-hover text-text-secondary"
             }`}
-            style={{ color: currentPart === 2 ? "#ffffff" : "var(--text-secondary)" }}
           >
             🗣️ Phần 2: Thảo luận giải pháp (4p)
           </Link>
@@ -128,9 +124,8 @@ export default async function PracticeListPage({
             className={`px-4 py-2 rounded-xl text-sm font-medium transition-all ${
               currentPart === 3
                 ? "bg-indigo-600 text-white shadow-md shadow-indigo-500/20"
-                : "hover:bg-[var(--surface-hover)]"
+                : "hover:bg-surface-hover text-text-secondary"
             }`}
-            style={{ color: currentPart === 3 ? "#ffffff" : "var(--text-secondary)" }}
           >
             🧠 Phần 3: Phát triển đề tài (5p)
           </Link>
@@ -152,33 +147,27 @@ export default async function PracticeListPage({
                       <span>Phần {exercise.part}</span>
                     </span>
                     <span
-                      className="text-xs px-2.5 py-1 rounded-md font-medium"
-                      style={{
-                        background: "var(--surface)",
-                        color: "var(--text-muted)",
-                      }}
+                      className="text-xs px-2.5 py-1 rounded-md font-medium bg-surface text-text-muted"
                     >
                       Độ khó: {"⭐".repeat(exercise.difficulty || 1)}
                     </span>
                   </div>
 
                   <h3
-                    className="text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors"
-                    style={{ color: "var(--text-primary)" }}
+                    className="text-lg font-bold mb-2 group-hover:text-indigo-400 transition-colors text-text-primary"
                   >
                     {exercise.title}
                   </h3>
 
                   <p
-                    className="text-sm line-clamp-3 mb-6 leading-relaxed"
-                    style={{ color: "var(--text-secondary)" }}
+                    className="text-sm line-clamp-3 mb-6 leading-relaxed text-text-secondary"
                   >
                     {exercise.prompt}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[var(--border)] flex items-center justify-between">
-                  <span className="text-xs" style={{ color: "var(--text-muted)" }}>
+                <div className="pt-4 border-t border-border flex items-center justify-between">
+                  <span className="text-xs text-text-muted">
                     Format chuẩn VSTEP
                   </span>
                   <Link

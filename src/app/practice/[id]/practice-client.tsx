@@ -344,21 +344,20 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
           <div className="flex items-center gap-3">
             <Link
               href="/practice"
-              className="flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-[var(--surface-hover)] transition-colors"
-              style={{ color: "var(--text-secondary)" }}
+              className="flex items-center gap-2 text-sm font-medium px-3 py-1.5 rounded-lg hover:bg-surface-hover transition-colors text-text-secondary"
             >
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
               <span>Danh sách đề</span>
             </Link>
-            <div className="h-4 w-px bg-[var(--border)]" />
+            <div className="h-4 w-px bg-border" />
             <span className="badge badge-active">
               {exercise.part === 1 && "Phần 1: Tương tác xã hội"}
               {exercise.part === 2 && "Phần 2: Thảo luận giải pháp"}
               {exercise.part === 3 && "Phần 3: Phát triển đề tài"}
             </span>
-            <span className="text-sm font-semibold truncate max-w-xs md:max-w-md hidden sm:inline" style={{ color: "var(--text-primary)" }}>
+            <span className="text-sm font-semibold truncate max-w-xs md:max-w-md hidden sm:inline text-text-primary">
               {exercise.title}
             </span>
           </div>
@@ -395,26 +394,26 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                   VSTEP Part 1 — Tương tác xã hội (3 phút)
                 </span>
               </div>
-              <span className="text-xs px-2.5 py-1 rounded bg-[var(--surface)] text-[var(--text-muted)]">
+              <span className="text-xs px-2.5 py-1 rounded bg-surface text-text-muted">
                 Không có thời gian chuẩn bị • Trả lời trực tiếp
               </span>
             </div>
 
-            <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+            <p className="text-sm text-text-secondary">
               Bạn sẽ trả lời các câu hỏi ngắn về <strong>2 chủ đề</strong> quen thuộc dưới đây. Hãy trả lời trực tiếp, mở rộng ý từ 2-3 câu mỗi câu hỏi và giữ tốc độ tự nhiên.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {exercise.part1_topics && exercise.part1_topics.length > 0 ? (
                 exercise.part1_topics.map((t, idx) => (
-                  <div key={idx} className="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+                  <div key={idx} className="p-5 rounded-2xl bg-surface border border-border">
                     <h3 className="font-bold text-base mb-3 text-indigo-400 flex items-center gap-2">
                       <span className="w-6 h-6 rounded-lg bg-indigo-500/20 text-indigo-300 flex items-center justify-center text-xs">
                         {idx + 1}
                       </span>
                       <span>{t.title}</span>
                     </h3>
-                    <ul className="space-y-2.5 text-sm" style={{ color: "var(--text-primary)" }}>
+                    <ul className="space-y-2.5 text-sm text-text-primary">
                       {t.questions.map((q, qIdx) => (
                         <li key={qIdx} className="flex items-start gap-2">
                           <span className="text-indigo-400 font-semibold text-xs mt-1">•</span>
@@ -425,7 +424,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                   </div>
                 ))
               ) : (
-                <div className="p-4 rounded-xl bg-[var(--surface)] text-sm" style={{ color: "var(--text-primary)" }}>
+                <div className="p-4 rounded-xl bg-surface text-sm text-text-primary">
                   {exercise.prompt}
                 </div>
               )}
@@ -443,7 +442,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                   VSTEP Part 2 — Thảo luận giải pháp (4 phút)
                 </span>
               </div>
-              <span className="text-xs px-2.5 py-1 rounded bg-[var(--surface)] text-[var(--text-muted)]">
+              <span className="text-xs px-2.5 py-1 rounded bg-surface text-text-muted">
                 1 phút chuẩn bị • 3 phút nói
               </span>
             </div>
@@ -451,7 +450,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
             {/* Situation box */}
             <div className="p-5 rounded-2xl bg-gradient-to-r from-cyan-500/10 via-indigo-500/5 to-transparent border border-cyan-500/20">
               <div className="text-xs uppercase font-bold text-cyan-400 mb-2">📌 Tình huống thực tế (Situation):</div>
-              <p className="text-base md:text-lg font-semibold leading-relaxed" style={{ color: "var(--text-primary)" }}>
+              <p className="text-base md:text-lg font-semibold leading-relaxed text-text-primary">
                 {exercise.part2_situation || exercise.prompt}
               </p>
             </div>
@@ -459,7 +458,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
             {/* 3 Options */}
             {exercise.part2_options && exercise.part2_options.length > 0 && (
               <div>
-                <div className="text-xs uppercase font-bold text-[var(--text-muted)] mb-3">
+                <div className="text-xs uppercase font-bold text-text-muted mb-3">
                   3 Phương án lựa chọn (Click để chọn phương án bạn sẽ bảo vệ):
                 </div>
                 <div className="grid grid-cols-1 gap-3">
@@ -473,15 +472,15 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                         className={`text-left p-4 rounded-xl border transition-all flex items-center justify-between cursor-pointer ${
                           isSelected
                             ? "bg-cyan-500/15 border-cyan-500 shadow-md shadow-cyan-500/10"
-                            : "bg-[var(--surface)] border-[var(--border)] hover:border-cyan-500/40"
+                            : "bg-surface border-border hover:border-cyan-500/40"
                         }`}
                       >
-                        <span className="text-sm font-medium" style={{ color: "var(--text-primary)" }}>
+                        <span className="text-sm font-medium text-text-primary">
                           {opt}
                         </span>
                         <div
                           className={`w-5 h-5 rounded-full border flex items-center justify-center text-[10px] ${
-                            isSelected ? "border-cyan-400 bg-cyan-400 text-slate-900 font-bold" : "border-[var(--border)]"
+                            isSelected ? "border-cyan-400 bg-cyan-400 text-slate-900 font-bold" : "border-border"
                           }`}
                         >
                           {isSelected ? "✓" : ""}
@@ -494,7 +493,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
             )}
 
             {/* Strategy Tip */}
-            <div className="p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/15 text-xs space-y-1" style={{ color: "var(--text-secondary)" }}>
+            <div className="p-4 rounded-xl bg-cyan-500/5 border border-cyan-500/15 text-xs space-y-1 text-text-secondary">
               <div className="font-semibold text-cyan-400">💡 Yêu cầu bài thi VSTEP Part 2:</div>
               <div>1. Nêu rõ phương án bạn chọn và các lợi ích thuyết phục nhất (Advantages).</div>
               <div>2. So sánh và <strong>phản biện/bác bỏ 2 phương án còn lại</strong> (chỉ ra nhược điểm, chi phí hoặc tính bất khả thi).</div>
@@ -512,14 +511,14 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                   VSTEP Part 3 — Phát triển đề tài (5 phút)
                 </span>
               </div>
-              <span className="text-xs px-2.5 py-1 rounded bg-[var(--surface)] text-[var(--text-muted)]">
+              <span className="text-xs px-2.5 py-1 rounded bg-surface text-text-muted">
                 1 phút chuẩn bị • 3-4 phút nói
               </span>
             </div>
 
             {/* Sơ đồ tư duy (Visual Mindmap) */}
             {exercise.part3_mindmap && (
-              <div className="p-6 rounded-2xl bg-[var(--surface)] border border-[var(--border)] space-y-6">
+              <div className="p-6 rounded-2xl bg-surface border border-border space-y-6">
                 <div className="text-xs uppercase font-bold text-purple-400 text-center tracking-wider">
                   🧠 Sơ đồ tư duy (Mindmap)
                 </div>
@@ -534,8 +533,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                   {exercise.part3_mindmap.ideas.map((idea, idx) => (
                     <div
                       key={idx}
-                      className="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-xs md:text-sm font-medium flex items-center gap-2"
-                      style={{ color: "var(--text-primary)" }}
+                      className="p-3.5 rounded-xl bg-purple-500/10 border border-purple-500/20 text-xs md:text-sm font-medium flex items-center gap-2 text-text-primary"
                     >
                       <span className="w-5 h-5 rounded-md bg-purple-500/20 text-purple-300 flex items-center justify-center font-bold text-[10px]">
                         {idx + 1}
@@ -556,12 +554,12 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
 
             {/* Follow-up Questions */}
             {exercise.part3_follow_up_questions && exercise.part3_follow_up_questions.length > 0 && (
-              <div className="p-5 rounded-2xl bg-[var(--surface)] border border-[var(--border)] space-y-3">
+              <div className="p-5 rounded-2xl bg-surface border border-border space-y-3">
                 <div className="text-xs uppercase font-bold text-purple-400 flex items-center gap-1.5">
                   <span>❓</span>
                   <span>Câu hỏi mở rộng của giám khảo (Follow-up Questions):</span>
                 </div>
-                <ul className="space-y-2 text-sm" style={{ color: "var(--text-primary)" }}>
+                <ul className="space-y-2 text-sm text-text-primary">
                   {exercise.part3_follow_up_questions.map((q, idx) => (
                     <li key={idx} className="flex items-start gap-2">
                       <span className="text-purple-400 font-bold">{idx + 1}.</span>
@@ -587,7 +585,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
             </button>
 
             {showReference && (
-              <div className="mt-3 p-4 rounded-xl bg-[var(--surface)] border border-[var(--border)] text-sm leading-relaxed animate-fade-in" style={{ color: "var(--text-secondary)" }}>
+              <div className="mt-3 p-4 rounded-xl bg-surface border border-border text-sm leading-relaxed animate-fade-in text-text-secondary">
                 <p className="whitespace-pre-line">{exercise.reference_text}</p>
               </div>
             )}
@@ -598,10 +596,10 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
         {defaultPrepTime > 0 && !prepFinished && (
           <div className="glass p-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <h3 className="font-semibold text-base mb-1" style={{ color: "var(--text-primary)" }}>
+              <h3 className="font-semibold text-base mb-1 text-text-primary">
                 ⏱️ Thời gian chuẩn bị: 1 phút
               </h3>
-              <p className="text-xs" style={{ color: "var(--text-muted)" }}>
+              <p className="text-xs text-text-muted">
                 Chuẩn bị nhanh dàn ý và từ vựng trước khi máy bắt đầu tính giờ nói chính thức.
               </p>
             </div>
@@ -622,7 +620,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                 <button
                   type="button"
                   onClick={skipPrepTimer}
-                  className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-[var(--surface-hover)] text-[var(--text-secondary)] hover:text-white transition-colors"
+                  className="px-4 py-2.5 rounded-xl text-xs font-semibold bg-surface-hover text-text-secondary hover:text-white transition-colors"
                 >
                   Bỏ qua chuẩn bị
                 </button>
@@ -649,25 +647,24 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
           <div className="mb-6 w-full max-w-sm">
             <div
               className={`text-4xl font-mono font-extrabold tracking-wider ${
-                recordingState === "recording" ? "text-rose-500 animate-pulse" : ""
+                recordingState === "recording" ? "text-rose-500 animate-pulse" : "text-text-primary"
               }`}
-              style={{ color: recordingState === "recording" ? "#ef4444" : "var(--text-primary)" }}
             >
               {formatTimer(recordSeconds)}
-              <span className="text-xs font-normal text-[var(--text-muted)] ml-2">
+              <span className="text-xs font-normal text-text-muted ml-2">
                 / {formatTimer(maxSpeakingTime)}
               </span>
             </div>
 
             {/* Time progress bar */}
-            <div className="w-full bg-[var(--surface-hover)] h-1.5 rounded-full mt-3 overflow-hidden">
+            <div className="w-full bg-surface-hover h-1.5 rounded-full mt-3 overflow-hidden">
               <div
                 className="h-full bg-gradient-to-r from-indigo-500 to-rose-500 rounded-full transition-all"
                 style={{ width: `${Math.min((recordSeconds / maxSpeakingTime) * 100, 100)}%` }}
               />
             </div>
 
-            <p className="text-xs mt-3" style={{ color: "var(--text-muted)" }}>
+            <p className="text-xs mt-3 text-text-muted">
               {recordingState === "idle" && "Nhấn nút thu âm để bắt đầu phần nói"}
               {recordingState === "recording" && "Đang thu âm... Hãy phát âm rõ ràng và triển khai đầy đủ các ý"}
               {recordingState === "recorded" && "Đã hoàn thành bản thu âm. Bạn có thể nghe lại hoặc nộp bài chấm điểm."}
@@ -756,10 +753,10 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
         {vstepResult && (
           <div className="glass p-8 space-y-8 animate-fade-in-up">
             {/* Header Result */}
-            <div className="border-b border-[var(--border)] pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="border-b border-border pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <span className="badge badge-active mb-2">Báo cáo đánh giá chuẩn VSTEP</span>
-                <h3 className="text-2xl font-bold" style={{ color: "var(--text-primary)" }}>
+                <h3 className="text-2xl font-bold text-text-primary">
                   Kết quả thi thử VSTEP Speaking
                 </h3>
               </div>
@@ -773,7 +770,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                       {vstepResult.vstep_scale} / 10
                     </div>
                     <div>
-                      <div className="text-xs uppercase font-semibold" style={{ color: "var(--text-muted)" }}>
+                      <div className="text-xs uppercase font-semibold text-text-muted">
                         Bậc năng lực ngoại ngữ
                       </div>
                       <div className={`text-sm font-bold ${bandInfo.color}`}>
@@ -833,26 +830,26 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <span className="text-base">{item.icon}</span>
-                        <span className="font-bold text-xs" style={{ color: "var(--text-primary)" }}>
+                        <span className="font-bold text-xs text-text-primary">
                           {item.label}
                         </span>
                       </div>
-                      <div className="text-[10px]" style={{ color: "var(--text-muted)" }}>
+                      <div className="text-[10px] text-text-muted">
                         {item.sub}
                       </div>
                     </div>
 
                     <div className="mt-3">
-                      <div className="text-xl font-bold" style={{ color: "var(--text-primary)" }}>
+                      <div className="text-xl font-bold text-text-primary">
                         {item.value}/100
                       </div>
-                      <div className="w-full bg-[var(--surface-hover)] h-1.5 rounded-full mt-2 overflow-hidden">
+                      <div className="w-full bg-surface-hover h-1.5 rounded-full mt-2 overflow-hidden">
                         <div
                           className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full transition-all duration-1000"
                           style={{ width: `${item.value}%` }}
                         />
                       </div>
-                      <p className="text-[10px] mt-2 leading-tight" style={{ color: "var(--text-muted)" }}>
+                      <p className="text-[10px] mt-2 leading-tight text-text-muted">
                         {item.desc}
                       </p>
                     </div>
@@ -867,11 +864,11 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                 <h4 className="text-sm font-bold uppercase tracking-wider mb-2 text-indigo-400">
                   Phân tích âm học từng từ khóa
                 </h4>
-                <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
+                <p className="text-xs mb-3 text-text-muted">
                   Xanh: Phát âm chuẩn xác (≥80) • Vàng: Cần trau chuốt (60-79) • Đỏ: Sai âm / Nuốt âm (&lt;60)
                 </p>
 
-                <div className="flex flex-wrap gap-2 p-4 rounded-2xl bg-[var(--surface)] border border-[var(--border)]">
+                <div className="flex flex-wrap gap-2 p-4 rounded-2xl bg-surface border border-border">
                   {vstepResult.words.map((w, idx) => {
                     const isHigh = w.accuracy_score >= 80;
                     const isMed = w.accuracy_score >= 60 && w.accuracy_score < 80;
@@ -901,7 +898,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
                 <span>🎯</span>
                 <span>Lời khuyên của chuyên gia luyện thi VSTEP:</span>
               </div>
-              <ul className="text-xs space-y-2 list-disc list-inside leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              <ul className="text-xs space-y-2 list-disc list-inside leading-relaxed text-text-secondary">
                 {vstepResult.feedback_tips?.map((tip, idx) => (
                   <li key={idx}>{tip}</li>
                 ))}
@@ -909,7 +906,7 @@ export function PracticeClient({ exercise }: PracticeClientProps) {
             </div>
 
             {/* Action buttons */}
-            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-[var(--border)]">
+            <div className="flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-border">
               <button
                 type="button"
                 onClick={resetRecording}
